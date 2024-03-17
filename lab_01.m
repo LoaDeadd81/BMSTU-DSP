@@ -1,4 +1,4 @@
-sigma = 2;
+sigma = 5;
 plot_step = 0.005;
 
 n = input('Input n: ');
@@ -6,8 +6,8 @@ dt = input('Input dt: ');
 
 t_max = dt*(n-1)/2;
 t = -t_max:dt:t_max; 
-l = - t_max /2;
-r = t_max / 2;
+l = -2;
+r = 2;
 
 rect_discrete = rect_arr(t, l, r);
 gauss_discrete = gauss_arr(t, sigma);
@@ -34,7 +34,7 @@ hold on;
 grid on;
 plot(x, rect_ref, 'k');
 plot(x, rect_restored, 'b');
-plot(t, rect_discrete, '.m');
+plot(t, rect_discrete, '.g');
 legend('Исходная', 'Восстановленная', 'Дискретная');
 
 subplot(2,1,2);
@@ -46,7 +46,7 @@ plot(x, gauss_restored, 'b');
 plot(t, gauss_discrete, '.m');
 legend('Исходная', 'Восстановленная', 'Дискретная');
 
-function y = sinc(x);
+function y = sinc(x)
     y = sin(x)/x;
 end
 
