@@ -21,19 +21,28 @@ function lab_04
     BB = buttfilt(6,20);
 
     figure(1)
-    plot(t,x0,t,x1,t,x2);
-    title('Исходные сигналы');
-    legend('Без помех','Помеха по Гауссу','Импульсная помеха');
+    plot(t,x1);
+    title('Помеха по Гауссу');
 
     figure(2)
-    plot(t,x0,t,filtfilt(G,1,x1),t,filtfilt(G,1,x2));
-    title('Гауссовский фильтр');
-    legend('Без помех','Помеха по Гауссу','Импульсная помеха');
+    plot(t,x2);
+    title('Помеха по равномерному закону');
 
     figure(3)
-    plot(t,x0,t,filtfilt(BB,1,x1),t,filtfilt(BB,1,x2));
-    title('Фильтр Баттеруорта');
-    legend('Без помех','Помеха по Гауссу','Импульсная помеха');
+    plot(t,filtfilt(G,1,x1));
+    title('Помеха по Гауссу с фильтром Гауса');
+
+    figure(4)
+    plot(t,filtfilt(BB,1,x1));
+    title('Помеха по Гауссу с фильтром Баттеруорта');
+
+    figure(5)
+    plot(t,filtfilt(G,1,x2));
+    title('Помеха по равномерному закону с фильтром Гауса');
+
+    figure(6)
+    plot(t,filtfilt(BB,1,x2));
+    title('Помеха по равномерному закону с фильтром Баттеруорта');
 end
 
 function y = gauspls(x,s)
